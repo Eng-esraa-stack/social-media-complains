@@ -229,10 +229,6 @@ $('q').addEventListener('input',()=>{ F.q=$('q').value.trim(); renderAll(); });
 $('reset').onclick=()=>{ for(const k in F) F[k]=''; $('q').value=''; sortCol=null; renderAll(); };
 tbl.tHead.rows[1].addEventListener('click',e=>{ const th=e.target.closest('th'); if(!th) return; const i=+th.dataset.i; sortDir=(sortCol===i)?-sortDir:1; sortCol=i; renderLog(); });
 
-// ---------- القوائم ----------
-const keys=Object.keys(L), maxLen=Math.max(...keys.map(k=>L[k].length));
-$('lists').innerHTML = `<tr>${keys.map(k=>`<th>${k}</th>`).join('')}</tr>`+Array.from({length:maxLen},(_,i)=>`<tr>${keys.map(k=>`<td>${esc(L[k][i]||'')}</td>`).join('')}</tr>`).join('');
-
 // ---------- تجميع ----------
 const t=today; $('updated').textContent = `آخر تحديث: ${String(t.getDate()).padStart(2,'0')}/${String(t.getMonth()+1).padStart(2,'0')}/${t.getFullYear()}`;
 buildKpis();
